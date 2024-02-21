@@ -1,0 +1,8 @@
+<menu>
+    <element name="siteTitle" type="xpath">//*[@id="root"]/div/div[1]</element>
+    <element name="usernameInput" type="xpath">//*[@id="user-name"]</element>
+    <element name="passwordInput" type="xpath">//*[@id="password"]</element>
+    <element name="loginButton" type="xpath">//*[@id="login-button"]</element>
+    <element name="loginCredentials" type="xpath">//*[@id="login_credentials"]</element>
+    <element name="password" type="xpath">//*[@id="root"]/div/div[2]/div[2]/div/div[2]</element>
+</menu>
