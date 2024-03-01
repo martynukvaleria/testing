@@ -1,21 +1,20 @@
 package web;
 
-import web.elements.Button;
+
+import web.elements.TextField;
 
 // page_url = https://www.google.com/
 public class GooglePage {
-    public Button searchArea = new Button("//textarea[@class=\"gLFyf\"]");
-
-    public GooglePage(){
-        super();
-    }
-    public void sendKeysToSearch(String text){
+    public TextField searchArea = new TextField("text", "//textarea[@class=\"gLFyf\"]");
+    public void sendKeysToSearch(String text) {
         searchArea.sendKeys(text);
     }
+
     public void click() {
         searchArea.click();
     }
-    public void waitForPageLoading(){
-        searchArea.waitForVisibility();
+
+    public boolean waitForPageLoading() {
+        return searchArea.isDisplayed();
     }
 }

@@ -2,26 +2,33 @@ package web.elements;
 
 import core.DriverUtils;
 import org.openqa.selenium.WebElement;
- public abstract class PageElement {
-    protected WebElement webElement;
 
-    public PageElement(String locator) {
-        this.webElement = DriverUtils.findElementByXpath(locator);
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class PageElement {
+    protected String name;
+    protected String locator;
+
+    public PageElement(String name, String locator) {
+        this.name = name;
+        this.locator = locator;
     }
 
     public void click() {
-        webElement.click();
+        DriverUtils.click(locator);
     }
 
     public boolean isDisplayed() {
-        return webElement.isDisplayed();
+        DriverUtils.waitForOpen(locator);
+        return !DriverUtils.findElementsByXpath(locator).isEmpty();
     }
 
-    public void waitForVisibility() {
-        DriverUtils.waitForOpen(webElement);
+    public static List<WebElement> addToList(String locator) {
+        return DriverUtils.findElementsByXpath(locator);
     }
 
     public String getText() {
-        return webElement.getText();
+        return DriverUtils.findElementByXpath(locator).getText();
     }
 }
