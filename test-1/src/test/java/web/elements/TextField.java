@@ -10,11 +10,7 @@ public class TextField extends PageElement {
         DriverUtils.sendKeys(text, locator);
     }
 
-    public void clickEnter(String locator) {
+    public void clickEnter() {
         DriverUtils.clickEnter(locator);
-    }
-
-    public String getLocator() {
-        return locator;
     }
 }

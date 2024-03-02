@@ -8,19 +8,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DriverUtils {
     public static DriverFactory factory = new DriverFactory();
-    public static WebDriver driver = factory.getDriver("chrome");
+    public static WebDriver driver = factory.getDriver("edge");
 
     public static void navigateToUrl(String url) {
         driver.get(url);
     }
 
     public static void waitForOpen(String locator) {
-        WebDriverWait wait = new WebDriverWait((WebDriver) driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(findElementByXpath(locator)));
     }
 
