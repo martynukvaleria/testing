@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigUtils {
-    private Properties properties;
-    private final String configFilePath = "src/test/java/resources/config.properties";
+    private static Properties properties;
+    private static final String configFilePath = "src/test/java/resources/config.properties";
 
-    public ConfigUtils() {
+    //one method for all
+    public static void readConfigUtils() {
         File ConfigFile = new File(configFilePath);
         try {
             FileInputStream configFileReader = new FileInputStream(ConfigFile);
@@ -27,53 +28,13 @@ public class ConfigUtils {
             throw new RuntimeException("config.properties not found at config file path" + configFilePath);
         }
     }
-
-    public String getApplicationUrl() {
-        String applicationUrl = properties.getProperty("url.base");
-        if (applicationUrl != null)
-            return applicationUrl;
-        else
-            throw new RuntimeException("Application url not specified in the config.properties file.");
-    }
-
-    public String getLocator(String property) {
+    public static String getProperty(String property) {
+        readConfigUtils();
         String locator = properties.getProperty(property);
         if (locator != null)
             return locator;
         else
             throw new RuntimeException("Locator not specified in the config.properties file.");
-    }
-
-
-    public String getName() {
-        String username = properties.getProperty("name");
-        if (username != null)
-            return username;
-        else
-            throw new RuntimeException("username not specified in the config.properties file.");
-    }
-
-    public String getResult() {
-        String result = properties.getProperty("private");
-        if (result != null)
-            return result;
-        else
-            throw new RuntimeException("result not specified in the config.properties file.");
-    }
-    public String getData(String property) {
-        String data = properties.getProperty(property);
-        if (data != null)
-            return data;
-        else
-            throw new RuntimeException("result not specified in the config.properties file.");
-    }
-
-    public String getBrowser() {
-        String browser = properties.getProperty("browser");
-        if (browser != null)
-            return browser;
-        else
-            throw new RuntimeException("browser not specified in the config.properties file.");
     }
 
 }
