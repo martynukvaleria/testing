@@ -58,6 +58,21 @@ public class TestingPage {
     public Button editButton = new Button("edit button", editButtonLocator);
     public TextField searchField = new TextField("search field", searchFieldLocator);
 
+    //upload
+    public String uploadLocator = "//input[@type=\"file\"]";
+    public String filepathLocator = "//p[@id=\"uploadedFilePath\"]";
+    public Button upload = new Button("upload", uploadLocator);
+    public TextField filepath = new TextField("filepath", filepathLocator);
+
+    //dynamic
+    public String enableButtonLocator = "//button[@id=\"enableAfter\"]";
+    public String colorButtonLocator = "//button[text()=\"Color Change\"]";
+    public String visibleButtonLocator = "//button[@id=\"visibleAfter\"]";
+
+    public Button enableButton = new Button("enable", enableButtonLocator);
+    public Button colorButton = new Button("color", colorButtonLocator);
+    public Button visibleButton = new Button("visible", visibleButtonLocator);
+
     public String getResult() {
         selectionResult.scrollToElement();
         selectionResult.waitForAppearance();
@@ -160,6 +175,19 @@ public class TestingPage {
         openWebTablePage.waitForAppearance();
         openWebTablePage.click();
     }
+    public void sendFileToUpload(){
+        upload.scrollToElement();
+        upload.waitForAppearance();
+        upload.sendFileToUpload();
+    }
+    public boolean resultPathContainsName(){
+        filepath.scrollToElement();
+        filepath.waitForAppearance();
+        return filepath.getText().contains(ConfigUtils.getValue("name_of_file"));
+    }
+
+
+
 }
 
 

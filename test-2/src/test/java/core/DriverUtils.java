@@ -54,4 +54,8 @@ public class DriverUtils {
         WebElement element = findElementByXpath(xpath);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+    public static void sendFileToUpload(String xpath) {
+        driver.findElement(By.xpath(xpath)).sendKeys(ConfigUtils.getValue("filepath"));
+    }
 }
