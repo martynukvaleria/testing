@@ -10,4 +10,10 @@ public class Button extends PageElement {
     public void sendFileToUpload() {
         DriverUtils.sendFileToUpload(locator);
     }
+    public void waitForClick(){
+        DriverUtils.waitForBeClickable(locator);
+    }
+    public String getColor(){
+        return DriverUtils.getColor(locator);
+    }
 }

@@ -5,8 +5,7 @@ import core.DriverUtils;
 import org.testng.annotations.*;
 import web.TestingPage;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class UploadAndDynamicTest {
     TestingPage testingPage = new TestingPage();
@@ -22,6 +21,13 @@ public class UploadAndDynamicTest {
 //        testingPage.sendFileToUpload();
 //        assertTrue(testingPage.resultPathContainsName());
 
+        testingPage.openDynamicPage();
+//        String before = testingPage.getColor();
+//        testingPage.clickFirstButton();
+//        String after = testingPage.getColor();
+//        assertNotEquals(before, after);
+        //doesnt wait correctly
+        testingPage.clickThirdButton();
 
 
     }

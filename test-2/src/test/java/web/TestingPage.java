@@ -5,6 +5,8 @@ import web.elements.Button;
 import web.elements.CheckBox;
 import web.elements.TextField;
 
+import java.util.Objects;
+
 public class TestingPage {
 
     //locators to string
@@ -69,9 +71,12 @@ public class TestingPage {
     public String colorButtonLocator = "//button[text()=\"Color Change\"]";
     public String visibleButtonLocator = "//button[@id=\"visibleAfter\"]";
 
+    public String dynamicPageLocator = "//span[text()=\"Dynamic Properties\"]/ancestor::li";
+
     public Button enableButton = new Button("enable", enableButtonLocator);
     public Button colorButton = new Button("color", colorButtonLocator);
     public Button visibleButton = new Button("visible", visibleButtonLocator);
+    public Button dynamicPage = new Button("dynamic", dynamicPageLocator);
 
     public String getResult() {
         selectionResult.scrollToElement();
@@ -175,19 +180,42 @@ public class TestingPage {
         openWebTablePage.waitForAppearance();
         openWebTablePage.click();
     }
-    public void sendFileToUpload(){
+
+    public void sendFileToUpload() {
         upload.scrollToElement();
         upload.waitForAppearance();
         upload.sendFileToUpload();
     }
-    public boolean resultPathContainsName(){
+
+    public boolean resultPathContainsName() {
         filepath.scrollToElement();
         filepath.waitForAppearance();
         return filepath.getText().contains(ConfigUtils.getValue("name_of_file"));
     }
 
 
+    public void clickFirstButton() {
+        enableButton.scrollToElement();
+        enableButton.waitForAppearance();
+        enableButton.waitForClick();
+        enableButton.click();
+    }
 
+    public void openDynamicPage() {
+        dynamicPage.scrollToElement();
+        dynamicPage.waitForAppearance();
+        dynamicPage.click();
+    }
+
+    public void clickThirdButton() {
+        visibleButton.waitForAppearance();
+        dynamicPage.scrollToElement();
+        visibleButton.click();
+    }
+
+    public String getColor() {
+        return colorButton.getColor();
+    }
 }
 
 

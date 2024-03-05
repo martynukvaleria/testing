@@ -5,6 +5,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Objects;
+
+import static java.lang.Thread.sleep;
 
 public class DriverUtils {
     public static DriverFactory factory = new DriverFactory();
@@ -57,5 +60,9 @@ public class DriverUtils {
 
     public static void sendFileToUpload(String xpath) {
         driver.findElement(By.xpath(xpath)).sendKeys(ConfigUtils.getValue("filepath"));
+    }
+
+    public static String getColor(String xpath) {
+        return driver.findElement(By.xpath(xpath)).getCssValue("color");
     }
 }
