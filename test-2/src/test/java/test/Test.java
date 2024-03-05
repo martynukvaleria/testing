@@ -13,28 +13,28 @@ public class Test {
     @BeforeMethod
     public void before() throws Throwable {
         DriverUtils.maxSize();
-        DriverUtils.navigateToUrl(ConfigUtils.getProperty("url.base"));
+        DriverUtils.navigateToUrl(ConfigUtils.getValue("url.base"));
     }
 
     @org.testng.annotations.Test
     public void test() throws Throwable {
         testingPage.selectCheckBoxPrivate();
-        assertEquals(testingPage.getResult(), ConfigUtils.getProperty("result"));
+        assertEquals(testingPage.getResult(), ConfigUtils.getValue("result"));
 
         testingPage.openWebTablePage();
         testingPage.clickDeleteTrice();
 
         testingPage.fillFirstUserData();
-        assertEquals(testingPage.firstNameCell.getText(), ConfigUtils.getProperty("username1"));
-        assertEquals(testingPage.salaryCell.getText(), ConfigUtils.getProperty("userSalary"));
+        assertEquals(testingPage.firstNameCell.getText(), ConfigUtils.getValue("username1"));
+        assertEquals(testingPage.salaryCell.getText(), ConfigUtils.getValue("userSalary"));
 
         testingPage.changeFirstUserName();
-        assertEquals(testingPage.firstNameCell.getText(), ConfigUtils.getProperty("username3"));
+        assertEquals(testingPage.firstNameCell.getText(), ConfigUtils.getValue("username3"));
 
         testingPage.fillSecondUserData();
 
-        testingPage.searchField.sendKeys(ConfigUtils.getProperty("userLastName2"));
-        assertEquals(testingPage.lastNameCell.getText(), ConfigUtils.getProperty("userLastName2"));
+        testingPage.searchField.sendKeys(ConfigUtils.getValue("userLastName2"));
+        assertEquals(testingPage.lastNameCell.getText(), ConfigUtils.getValue("userLastName2"));
     }
 
     @AfterMethod

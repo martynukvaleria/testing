@@ -28,11 +28,11 @@ public class ConfigUtils {
             throw new RuntimeException("config.properties not found at config file path" + configFilePath);
         }
     }
-    public static String getProperty(String property) {
+    public static String getValue(String property) {
         readConfigUtils();
-        String locator = properties.getProperty(property);
-        if (locator != null)
-            return locator;
+        String value = properties.getProperty(property);
+        if (value != null)
+            return value;
         else
             throw new RuntimeException("Locator not specified in the config.properties file.");
     }

@@ -5,11 +5,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class DriverUtils {
     public static DriverFactory factory = new DriverFactory();
-    public static WebDriver driver = factory.getDriver(ConfigUtils.getProperty("browser"));
+    public static WebDriver driver = factory.getDriver(ConfigUtils.getValue("browser"));
 
     public static JavascriptExecutor js = (JavascriptExecutor) driver;
 

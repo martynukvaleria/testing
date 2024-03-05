@@ -10,9 +10,9 @@ public class TestingPage {
     //locators to string
     public String openMenuLocator = "//div[text()=\"Elements\"]";
     public String checkBoxPageLocator = "//li[@id=\"item-1\"]";
-    public String openHomeLocator = "//*[@id=\"tree-node\"]/ol/li/span/button";
-    public String openDocumentsLocator = "//*[@id=\"tree-node\"]/ol/li/ol/li[2]/span/button";
-    public String openOfficeLocator = "//*[@id=\"tree-node\"]/ol/li/ol/li[2]/ol/li[2]/span/button";
+    public String openHomeLocator = "//button[@class=\"rct-collapse rct-collapse-btn\"]";
+    public String openDocumentsLocator = "//span[text()=\"Documents\"]/ancestor::label/preceding-sibling::button";
+    public String openOfficeLocator = "//span[text()=\"Office\"]/ancestor::label/preceding-sibling::button";
     public String privateCheckBoxLocator = "//span[text()=\"Private\"]/ancestor::label/span[@class=\"rct-checkbox\"]";
     public String selectionResultLocator = "//span[@class=\"text-success\"]";
 
@@ -122,12 +122,12 @@ public class TestingPage {
         addButton.waitForAppearance();
         addButton.click();
         firstName.waitForAppearance();
-        firstName.sendKeys(ConfigUtils.getProperty("username1"));
-        lastName.sendKeys(ConfigUtils.getProperty("userLastName1"));
-        email.sendKeys(ConfigUtils.getProperty("userEmail"));
-        age.sendKeys(ConfigUtils.getProperty("userAge"));
-        salary.sendKeys(ConfigUtils.getProperty("userSalary"));
-        department.sendKeys(ConfigUtils.getProperty("userDepartment"));
+        firstName.sendKeys(ConfigUtils.getValue("username1"));
+        lastName.sendKeys(ConfigUtils.getValue("userLastName1"));
+        email.sendKeys(ConfigUtils.getValue("userEmail"));
+        age.sendKeys(ConfigUtils.getValue("userAge"));
+        salary.sendKeys(ConfigUtils.getValue("userSalary"));
+        department.sendKeys(ConfigUtils.getValue("userDepartment"));
         submitButton.click();
     }
 
@@ -137,7 +137,7 @@ public class TestingPage {
         editButton.click();
         firstName.waitForAppearance();
         firstName.clear();
-        firstName.sendKeys(ConfigUtils.getProperty("username3"));
+        firstName.sendKeys(ConfigUtils.getValue("username3"));
         submitButton.click();
         firstName.waitForAppearance();
     }
@@ -146,12 +146,12 @@ public class TestingPage {
         addButton.scrollToElement();
         addButton.click();
         firstName.waitForAppearance();
-        firstName.sendKeys(ConfigUtils.getProperty("username2"));
-        lastName.sendKeys(ConfigUtils.getProperty("userLastName2"));
-        email.sendKeys(ConfigUtils.getProperty("userEmail"));
-        age.sendKeys(ConfigUtils.getProperty("userAge"));
-        salary.sendKeys(ConfigUtils.getProperty("userSalary"));
-        department.sendKeys(ConfigUtils.getProperty("userDepartment"));
+        firstName.sendKeys(ConfigUtils.getValue("username2"));
+        lastName.sendKeys(ConfigUtils.getValue("userLastName2"));
+        email.sendKeys(ConfigUtils.getValue("userEmail"));
+        age.sendKeys(ConfigUtils.getValue("userAge"));
+        salary.sendKeys(ConfigUtils.getValue("userSalary"));
+        department.sendKeys(ConfigUtils.getValue("userDepartment"));
         submitButton.click();
         firstNameCell.waitForAppearance();
     }
