@@ -1,28 +1,29 @@
 package core;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class DriverUtils {
     public static DriverFactory factory = new DriverFactory();
-    public static ConfigUtils configUtils = new ConfigUtils();
-    public static WebDriver driver = factory.getDriver(configUtils.getBrowser());
+    public static WebDriver driver = factory.getDriver(ConfigUtils.getValue("browser"));
 
+    public static JavascriptExecutor js = (JavascriptExecutor) driver;
 
     public static void navigateToUrl(String url) {
         driver.get(url);
     }
 
     public static void waitForOpen(String locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
         wait.until(ExpectedConditions.visibilityOf(findElementByXpath(locator)));
+    }
+
+    public static void waitForBeClickable(String locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+        wait.until(ExpectedConditions.elementToBeClickable(findElementByXpath(locator)));
     }
 
     public static WebElement findElementByXpath(String xpath) {
@@ -47,5 +48,10 @@ public class DriverUtils {
 
     public static void clear(String xpath) {
         driver.findElement(By.xpath(xpath)).clear();
+    }
+
+    public static void scrollToElement(String xpath) {
+        WebElement element = findElementByXpath(xpath);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }

@@ -22,4 +22,8 @@ public abstract class PageElement {
     public String getText() {
         return DriverUtils.findElementByXpath(locator).getText();
     }
+
+    public void scrollToElement() {
+        DriverUtils.scrollToElement(locator);
+    }
 }
