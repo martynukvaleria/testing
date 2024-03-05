@@ -35,9 +35,9 @@ public class TestingPage {
     public String salaryLocator = "//input[@id=\"salary\"]";
     public String departmentLocator = "//input[@id=\"department\"]";
     public String submitButtonLocator = "//button[@id=\"submit\"]";
-    public String firstNameCellLocator = "//*[@id=\"app\"]/div/div/div/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[1]";
-    public String lastNameCellLocator = "//*[@id=\"app\"]/div/div/div/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[2]";
-    public String salaryCellLocator = "//*[@id=\"app\"]/div/div/div/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[5]";
+    public String firstNameCellLocator = "//div[@class='rt-tbody']//div[@class='rt-tr -odd']//div[@role='gridcell'][1]";
+    public String lastNameCellLocator = "//div[@class='rt-tbody']//div[@class='rt-tr -odd']//div[@role='gridcell'][2]";
+    public String salaryCellLocator = "//div[@class='rt-tbody']//div[@class='rt-tr -odd']//div[@role='gridcell'][5]";
     public String editButtonLocator = "//*[@id=\"edit-record-1\"]";
     public String searchFieldLocator = "//input[@id=\"searchBox\"]";
     public Button openWebTablePage = new Button("open webtable page", webTablePageLocator);
@@ -139,7 +139,6 @@ public class TestingPage {
         firstName.clear();
         firstName.sendKeys(ConfigUtils.getValue("username3"));
         submitButton.click();
-        firstName.waitForAppearance();
     }
 
     public void fillSecondUserData() {
