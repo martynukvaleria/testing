@@ -1,9 +1,12 @@
 package web;
 
 import core.ConfigUtils;
+import core.DriverUtils;
 import web.elements.Button;
 import web.elements.CheckBox;
 import web.elements.TextField;
+
+import static org.testng.Assert.assertNotEquals;
 
 public class TestingPage {
 
@@ -57,6 +60,29 @@ public class TestingPage {
 
     public Button editButton = new Button("edit button", editButtonLocator);
     public TextField searchField = new TextField("search field", searchFieldLocator);
+
+    //upload
+    public String uploadLocator = "//input[@type=\"file\"]";
+    public String filepathLocator = "//p[@id=\"uploadedFilePath\"]";
+    public Button upload = new Button("upload", uploadLocator);
+    public TextField filepath = new TextField("filepath", filepathLocator);
+
+    //dynamic
+    public String enableButtonLocator = "//button[@id=\"enableAfter\"]";
+    public String whiteButtonLocator = "//button[text()=\"Color Change\"]";
+    public String redButtonLocator = "//button[@class=\"mt-4 text-danger btn btn-primary\"]";
+    public String visibleButtonLocator = "//button[@id=\"visibleAfter\"]";
+
+    public String dynamicPageLocator = "//span[text()=\"Dynamic Properties\"]/ancestor::li";
+
+    public Button enableButton = new Button("enable", enableButtonLocator);
+    public Button whiteButton = new Button("color", whiteButtonLocator);
+    public Button redButton = new Button("color", redButtonLocator);
+    public Button visibleButton = new Button("visible", visibleButtonLocator);
+    public Button dynamicPage = new Button("dynamic", dynamicPageLocator);
+
+    public String adLocator = "//div[@id=\"Ad.Plus-970x250-1\"]";
+    public TextField ad = new TextField("ad", adLocator);
 
     public String getResult() {
         selectionResult.scrollToElement();
@@ -159,6 +185,60 @@ public class TestingPage {
         openWebTablePage.scrollToElement();
         openWebTablePage.waitForAppearance();
         openWebTablePage.click();
+    }
+
+    public void sendFileToUpload() {
+        upload.scrollToElement();
+        upload.waitForAppearance();
+        upload.sendFileToUpload();
+    }
+
+    public boolean resultPathContainsName() {
+        filepath.scrollToElement();
+        filepath.waitForAppearance();
+        return filepath.getText().contains(ConfigUtils.getValue("name_of_file"));
+    }
+
+
+    public void clickButtonAfterWait() {
+        ad.waitForAppearance();
+        enableButton.scrollToElement();
+        enableButton.waitForAppearance();
+        enableButton.waitForClick();
+        enableButton.click();
+    }
+
+    public void openDynamicPage() {
+        dynamicPage.scrollToElement();
+        dynamicPage.waitForAppearance();
+        dynamicPage.click();
+    }
+
+    public void clickButtonAfterAppearance() {
+        ad.waitForAppearance();
+        visibleButton.waitForAppearance();
+        dynamicPage.scrollToElement();
+        visibleButton.click();
+    }
+
+    public void checkColorButtonChanged() throws InterruptedException {
+        ad.waitForAppearance();
+        whiteButton.waitForAppearance();
+        String before = getFirstColor();
+        redButton.waitForAppearance();
+        String after = getSecondColor();
+        assertNotEquals(before, after);
+    }
+
+    public String getFirstColor() {
+        return whiteButton.getColor();
+    }
+    public String getSecondColor() {
+        return redButton.getColor();
+    }
+
+    public void reloadPage(){
+        DriverUtils.reloadPage();
     }
 }
 
