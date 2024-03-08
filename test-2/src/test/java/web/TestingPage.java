@@ -222,10 +222,10 @@ public class TestingPage {
     }
 
     public void checkColorButtonChanged() throws InterruptedException {
+        ad.waitForAppearance();
         whiteButton.waitForAppearance();
         String before = getFirstColor();
-        Thread.sleep(5000);
-//        redButton.waitForAppearance();
+        redButton.waitForAppearance();
         String after = getSecondColor();
         assertNotEquals(before, after);
     }

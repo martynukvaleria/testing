@@ -26,10 +26,8 @@ public class UploadAndDynamicTest {
         testingPage.clickButtonAfterWait();
 
         testingPage.reloadPage();
-        testingPage.ad.waitForAppearance();
         testingPage.checkColorButtonChanged();
 
-        //добавить полную прогрузку с
         testingPage.reloadPage();
         testingPage.clickButtonAfterAppearance();
     }
