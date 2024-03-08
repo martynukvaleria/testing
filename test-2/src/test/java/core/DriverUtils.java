@@ -5,9 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Objects;
 
-import static java.lang.Thread.sleep;
 
 public class DriverUtils {
     public static DriverFactory factory = new DriverFactory();
@@ -21,7 +19,7 @@ public class DriverUtils {
 
     public static void waitForOpen(String locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
-        wait.until(ExpectedConditions.visibilityOf(findElementByXpath(locator)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
 
     public static void waitForBeClickable(String locator) {
@@ -59,10 +57,15 @@ public class DriverUtils {
     }
 
     public static void sendFileToUpload(String xpath) {
-        driver.findElement(By.xpath(xpath)).sendKeys(ConfigUtils.getValue("filepath"));
+
+        driver.findElement(By.xpath(xpath)).sendKeys(System.getProperty("user.dir") + ConfigUtils.getValue("filepath"));
     }
 
     public static String getColor(String xpath) {
         return driver.findElement(By.xpath(xpath)).getCssValue("color");
+    }
+
+    public static void reloadPage(){
+        driver.navigate().refresh();
     }
 }

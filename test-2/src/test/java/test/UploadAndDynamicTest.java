@@ -18,18 +18,20 @@ public class UploadAndDynamicTest {
 
     @org.testng.annotations.Test
     public void test() throws Throwable {
-//        testingPage.sendFileToUpload();
-//        assertTrue(testingPage.resultPathContainsName());
+
+        testingPage.sendFileToUpload();
+        assertTrue(testingPage.resultPathContainsName());
 
         testingPage.openDynamicPage();
-//        String before = testingPage.getColor();
-//        testingPage.clickFirstButton();
-//        String after = testingPage.getColor();
-//        assertNotEquals(before, after);
-        //doesnt wait correctly
-        testingPage.clickThirdButton();
+        testingPage.clickButtonAfterWait();
 
+        testingPage.reloadPage();
+        testingPage.ad.waitForAppearance();
+        testingPage.checkColorButtonChanged();
 
+        //добавить полную прогрузку с
+        testingPage.reloadPage();
+        testingPage.clickButtonAfterAppearance();
     }
 
     @AfterMethod

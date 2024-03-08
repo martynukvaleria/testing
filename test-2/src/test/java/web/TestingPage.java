@@ -1,11 +1,12 @@
 package web;
 
 import core.ConfigUtils;
+import core.DriverUtils;
 import web.elements.Button;
 import web.elements.CheckBox;
 import web.elements.TextField;
 
-import java.util.Objects;
+import static org.testng.Assert.assertNotEquals;
 
 public class TestingPage {
 
@@ -68,15 +69,20 @@ public class TestingPage {
 
     //dynamic
     public String enableButtonLocator = "//button[@id=\"enableAfter\"]";
-    public String colorButtonLocator = "//button[text()=\"Color Change\"]";
+    public String whiteButtonLocator = "//button[text()=\"Color Change\"]";
+    public String redButtonLocator = "//button[@class=\"mt-4 text-danger btn btn-primary\"]";
     public String visibleButtonLocator = "//button[@id=\"visibleAfter\"]";
 
     public String dynamicPageLocator = "//span[text()=\"Dynamic Properties\"]/ancestor::li";
 
     public Button enableButton = new Button("enable", enableButtonLocator);
-    public Button colorButton = new Button("color", colorButtonLocator);
+    public Button whiteButton = new Button("color", whiteButtonLocator);
+    public Button redButton = new Button("color", redButtonLocator);
     public Button visibleButton = new Button("visible", visibleButtonLocator);
     public Button dynamicPage = new Button("dynamic", dynamicPageLocator);
+
+    public String adLocator = "//div[@id=\"Ad.Plus-970x250-1\"]";
+    public TextField ad = new TextField("ad", adLocator);
 
     public String getResult() {
         selectionResult.scrollToElement();
@@ -194,7 +200,8 @@ public class TestingPage {
     }
 
 
-    public void clickFirstButton() {
+    public void clickButtonAfterWait() {
+        ad.waitForAppearance();
         enableButton.scrollToElement();
         enableButton.waitForAppearance();
         enableButton.waitForClick();
@@ -207,14 +214,31 @@ public class TestingPage {
         dynamicPage.click();
     }
 
-    public void clickThirdButton() {
+    public void clickButtonAfterAppearance() {
+        ad.waitForAppearance();
         visibleButton.waitForAppearance();
         dynamicPage.scrollToElement();
         visibleButton.click();
     }
 
-    public String getColor() {
-        return colorButton.getColor();
+    public void checkColorButtonChanged() throws InterruptedException {
+        whiteButton.waitForAppearance();
+        String before = getFirstColor();
+        Thread.sleep(5000);
+//        redButton.waitForAppearance();
+        String after = getSecondColor();
+        assertNotEquals(before, after);
+    }
+
+    public String getFirstColor() {
+        return whiteButton.getColor();
+    }
+    public String getSecondColor() {
+        return redButton.getColor();
+    }
+
+    public void reloadPage(){
+        DriverUtils.reloadPage();
     }
 }
 
