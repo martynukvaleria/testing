@@ -3,12 +3,12 @@ package test;
 import core.ConfigUtils;
 import core.DriverUtils;
 import org.testng.annotations.*;
-import web.TestingPage;
+import web.ElementsPage;
 
 import static org.testng.Assert.*;
 
 public class UploadAndDynamicTest {
-    TestingPage testingPage = new TestingPage();
+    ElementsPage testingPage = new ElementsPage();
 
     @BeforeMethod
     public void before() throws Throwable {

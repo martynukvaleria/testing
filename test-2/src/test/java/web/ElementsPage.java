@@ -8,7 +8,7 @@ import web.elements.TextField;
 
 import static org.testng.Assert.assertNotEquals;
 
-public class TestingPage {
+public class ElementsPage {
 
     //locators to string
     public String openMenuLocator = "//div[text()=\"Elements\"]";

@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 
 public class DriverUtils {
@@ -57,7 +58,6 @@ public class DriverUtils {
     }
 
     public static void sendFileToUpload(String xpath) {
-
         driver.findElement(By.xpath(xpath)).sendKeys(System.getProperty("user.dir") + ConfigUtils.getValue("filepath"));
     }
 
@@ -65,7 +65,26 @@ public class DriverUtils {
         return driver.findElement(By.xpath(xpath)).getCssValue("color");
     }
 
-    public static void reloadPage(){
+    public static void reloadPage() {
         driver.navigate().refresh();
+    }
+
+    public static void switchToNewTab() {
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(tabs.size() - 1));
+    }
+
+    public static void switchToNewWindow() {
+        for (String winHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(winHandle);
+        }
+    }
+
+    public static void closeCurrentTab() {
+        driver.close();
+    }
+
+    public static void closeCurrentWindow() {
+        driver.close();
     }
 }
