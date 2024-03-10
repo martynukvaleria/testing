@@ -7,33 +7,33 @@ import web.elements.TextField;
 import java.util.Collection;
 
 public class AlertsPage {
-    private String openAlertsMenuLocator = "//div[@class=\"element-group\"][3]";
-    private String openAlertsPageLocator = "//div[@class=\"element-group\"][3]//li[@id=\"item-1\"]";
-    private Button openAlertsMenu = new Button("open alerts menu", openAlertsMenuLocator);
-    private Button openAlertsPage = new Button("open alerts page", openAlertsPageLocator);
+    private final String openAlertsMenuLocator = "//div[@class=\"element-group\"][3]";
+    private final String openAlertsPageLocator = "//div[@class=\"element-group\"][3]//li[@id=\"item-1\"]";
+    private final Button openAlertsMenu = new Button("open alerts menu", openAlertsMenuLocator);
+    private final Button openAlertsPage = new Button("open alerts page", openAlertsPageLocator);
     //browser
-    private String newTabLocator = "//button[@id=\"tabButton\"]";
-    private String newWindowLocator = "//button[@id=\"windowButton\"]";
-    private String newTabAndWindowTextLocator = "//h1[@id=\"sampleHeading\"]";
+    private final String newTabLocator = "//button[@id=\"tabButton\"]";
+    private final String newWindowLocator = "//button[@id=\"windowButton\"]";
+    private final String newTabAndWindowTextLocator = "//h1[@id=\"sampleHeading\"]";
 
     //alerts
-    private String simpleAlertButtonLocator = "//button[@id=\"alertButton\"]";
-    private String confirmAlertButtonLocator = "//button[@id=\"confirmButton\"]";
-    private String confirmResultLocator = "//span[@id=\"confirmResult\"]";
-    private String promptAlertButtonLocator = "//button[@id=\"promtButton\"]";
-    private String promptResultLocator = "//span[@id=\"promptResult\"]";
+    private final String simpleAlertButtonLocator = "//button[@id=\"alertButton\"]";
+    private final String confirmAlertButtonLocator = "//button[@id=\"confirmButton\"]";
+    private final String confirmResultLocator = "//span[@id=\"confirmResult\"]";
+    private final String promptAlertButtonLocator = "//button[@id=\"promtButton\"]";
+    private final String promptResultLocator = "//span[@id=\"promptResult\"]";
     //browser
-    private Button newTab = new Button("new tab", newTabLocator);
-    private Button newWindow = new Button("new window", newWindowLocator);
-    private TextField newTabText = new TextField("new tab text", newTabAndWindowTextLocator);
-    private TextField newWindowText = new TextField("new window text", newTabAndWindowTextLocator);
+    private final Button newTab = new Button("new tab", newTabLocator);
+    private final Button newWindow = new Button("new window", newWindowLocator);
+    private final TextField newTabText = new TextField("new tab text", newTabAndWindowTextLocator);
+    private final TextField newWindowText = new TextField("new window text", newTabAndWindowTextLocator);
 
     //alerts
-    private Button simpleAlertButton = new Button("simple alert", simpleAlertButtonLocator);
-    private Button confirmAlertButton = new Button("confirm alert", confirmAlertButtonLocator);
-    private TextField confirmResult = new TextField("confirm result", confirmResultLocator);
-    private Button promptAlertButton = new Button("prompt alert", promptAlertButtonLocator);
-    private TextField promptResult = new TextField("confirm result", promptResultLocator);
+    private final Button simpleAlertButton = new Button("simple alert", simpleAlertButtonLocator);
+    private final Button confirmAlertButton = new Button("confirm alert", confirmAlertButtonLocator);
+    private final TextField confirmResult = new TextField("confirm result", confirmResultLocator);
+    private final Button promptAlertButton = new Button("prompt alert", promptAlertButtonLocator);
+    private final TextField promptResult = new TextField("confirm result", promptResultLocator);
 
 
     public void clickNewTab(){
