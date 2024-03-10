@@ -6,6 +6,7 @@ import org.testng.annotations.*;
 import web.AlertsPage;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class AlertsTest {
@@ -20,12 +21,21 @@ public class AlertsTest {
     @Test
     public void test() throws Throwable {
         alertsPage.clickNewTab();
-        assertEquals(alertsPage.getNewTabText(), "This is a sample page");
+        assertEquals(alertsPage.getNewTabText(), ConfigUtils.getValue("new_tab_window_text"));
         alertsPage.closeNewTab();
 
         alertsPage.clickNewWindow();
-        assertEquals(alertsPage.getNewWindowText(), "This is a sample page");
+        assertEquals(alertsPage.getNewWindowText(), ConfigUtils.getValue("new_tab_window_text"));
         alertsPage.closeNewWindow();
+
+        alertsPage.openAlertsPage();
+        alertsPage.clickOkOnSimpleAlert();
+
+        alertsPage.clickCancelOnConfirmAlert();
+        assertTrue(alertsPage.getConfirmAlertText().contains("Cancel"));
+
+        alertsPage.clickAndEnterOnPromptAlert();
+        assertTrue(alertsPage.getPromptAlertText().contains(ConfigUtils.getValue("username1")));
     }
 
     @AfterMethod

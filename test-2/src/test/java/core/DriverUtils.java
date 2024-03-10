@@ -80,11 +80,21 @@ public class DriverUtils {
         }
     }
 
-    public static void closeCurrentTab() {
+    public static void closeCurrentTabOrWindow() {
         driver.close();
     }
+    public static void clickOkOnAlert(){
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public static void clickCancelOnAlert(){
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
+    }
 
-    public static void closeCurrentWindow() {
-        driver.close();
+    public static void enterNameToPromptAlert() {
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys(ConfigUtils.getValue("username1"));
+        alert.accept();
     }
 }
