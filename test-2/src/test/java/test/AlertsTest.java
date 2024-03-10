@@ -2,6 +2,7 @@ package test;
 
 import core.ConfigUtils;
 import core.DriverUtils;
+import core.XmlReader;
 import org.testng.annotations.*;
 import web.AlertsPage;
 
