@@ -47,11 +47,6 @@ public class DriverUtils {
     public static void quit() {
         driver.quit();
     }
-
-    public static void clear(String xpath) {
-        driver.findElement(By.xpath(xpath)).clear();
-    }
-
     public static void scrollToElement(String xpath) {
         WebElement element = findElementByXpath(xpath);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
