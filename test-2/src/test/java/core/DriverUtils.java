@@ -47,6 +47,7 @@ public class DriverUtils {
     public static void quit() {
         driver.quit();
     }
+
     public static void scrollToElement(String xpath) {
         WebElement element = findElementByXpath(xpath);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
@@ -70,19 +71,20 @@ public class DriverUtils {
     }
 
     public static void switchToNewWindow() {
-        for (String winHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(winHandle);
-        }
+        ArrayList<String> win = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(win.get(win.size() - 1));
     }
 
     public static void closeCurrentTabOrWindow() {
         driver.close();
     }
-    public static void clickOkOnAlert(){
+
+    public static void clickOkOnAlert() {
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
-    public static void clickCancelOnAlert(){
+
+    public static void clickCancelOnAlert() {
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
     }
@@ -91,5 +93,10 @@ public class DriverUtils {
         Alert alert = driver.switchTo().alert();
         alert.sendKeys(ConfigUtils.getValue("username1"));
         alert.accept();
+    }
+
+    public static void closeNewWindow() {
+        closeCurrentTabOrWindow();
+        switchToNewWindow();
     }
 }

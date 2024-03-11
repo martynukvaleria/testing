@@ -52,8 +52,7 @@ public class AlertsPage {
     }
 
     public void closeNewWindow() {
-        DriverUtils.closeCurrentTabOrWindow();
-        DriverUtils.switchToNewWindow();
+        DriverUtils.closeNewWindow();
     }
 
     public void openAlertsPage() {

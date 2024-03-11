@@ -8,7 +8,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 
 public class XmlReader {
-    static String pathXml = "/src/test/java/resources/locators/alertsLocators.xml";
+    static String pathXml = ConfigUtils.getValue("filepath_xml");
     static File inputFile = new File(System.getProperty("user.dir") + pathXml);
     static SAXReader saxReader = new SAXReader();
     static Document document;
