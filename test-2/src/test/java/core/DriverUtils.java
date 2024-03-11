@@ -99,4 +99,11 @@ public class DriverUtils {
         closeCurrentTabOrWindow();
         switchToNewWindow();
     }
+    public static String getValue(String xpath){
+        return driver.findElement(By.xpath(xpath)).getAttribute("value");
+    }
+
+    public static boolean isVisible(String xpath) {
+        return driver.findElement(By.xpath(xpath)).isDisplayed();
+    }
 }

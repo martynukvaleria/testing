@@ -26,4 +26,11 @@ public abstract class PageElement {
     public void scrollToElement() {
         DriverUtils.scrollToElement(locator);
     }
+    public String getValue(){
+        return DriverUtils.getValue(locator);
+    }
+
+    public boolean isVisible(){
+        return DriverUtils.isVisible(locator);
+    }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<locators>
+    <browser>
+        <newTabLocator>//button[@id="tabButton"]</newTabLocator>
+        <newWindowLocator>//button[@id="windowButton"]</newWindowLocator>
+        <newTabAndWindowTextLocator>//h1[@id="sampleHeading"]</newTabAndWindowTextLocator>
+    </browser>
+    <alert>
+        <openAlertsMenuLocator>//div[@class="element-group"][3]</openAlertsMenuLocator>
+        <openAlertsPageLocator>//div[@class="element-group"][3]//li[@id="item-1"]</openAlertsPageLocator>
+        <simpleAlertButtonLocator>//button[@id="alertButton"]</simpleAlertButtonLocator>
+        <confirmAlertButtonLocator>//button[@id="confirmButton"]</confirmAlertButtonLocator>
+        <confirmResultLocator>//span[@id="confirmResult"]</confirmResultLocator>
+        <promptAlertButtonLocator>//button[@id="promtButton"]</promptAlertButtonLocator>
+        <promptResultLocator>//span[@id="promptResult"]</promptResultLocator>
+    </alert>
+    <autoComplete>
+        <openWidgetsMenu>//div[@class="element-group"][4]</openWidgetsMenu>
+        <openAutoCompletePage>//div[@class="element-group"][4]//li[@id="item-1"]</openAutoCompletePage>
+        <multipleColorsField>//div[@id="autoCompleteMultipleContainer"]</multipleColorsField>
+        <multipleColorsFieldAfter>//div[@class="auto-complete__control auto-complete__control--is-focused
+            auto-complete__control--menu-is-open css-1pahdxg-control"]
+        </multipleColorsFieldAfter>
+        <autoCompletedMenu>//div[@class="auto-complete__menu css-2613qy-menu"]</autoCompletedMenu>
+    </autoComplete>
+    <datePicker>
+        <openDatePickerPage>//div[@class="element-group"][4]//li[@id="item-2"]</openDatePickerPage>
+        <inputDateField>//input[@id="datePickerMonthYearInput"]</inputDateField>
+        <inputDateAndTimeField>//input[@id="dateAndTimePickerInput"]</inputDateAndTimeField>
+        <monthPicker>//select[@class="react-datepicker__month-select"]</monthPicker>
+        <definedMonthPicker>//select[@class="react-datepicker__month-select"]//option[@value="5"]</definedMonthPicker>
+        <yearPicker>//select[@class="react-datepicker__year-select"]</yearPicker>
+        <definedYearPicker>//select[@class="react-datepicker__year-select"]//option[@value="2000"]</definedYearPicker>
+        <definedDayPicker>//div[@class="react-datepicker__day react-datepicker__day--015"]</definedDayPicker>
+        <nextMonthPicker>//span[@class="react-datepicker__month-read-view--selected-month"]</nextMonthPicker>
+        <nextYearPicker>//div[@class="react-datepicker__year-read-view"]</nextYearPicker>
+        <nextDefinedMonthPicker>//div[@class="react-datepicker__month-option" and text()="June"]
+        </nextDefinedMonthPicker>
+        <nextDefinedYearPicker>//div[@class="react-datepicker__year-option" and text()="2000"]</nextDefinedYearPicker>
+        <previousYearButton>//div[@class="react-datepicker__year-option"][12]
+        </previousYearButton>
+        <nextDefinedDayPicker>//div[@class="react-datepicker__day react-datepicker__day--015"]</nextDefinedDayPicker>
+        <nextDefinedTimePicker>//li[@class="react-datepicker__time-list-item " and text()="12:00"]
+        </nextDefinedTimePicker>
+    </datePicker>
+    <slider>
+        <openSliderPage>//div[@class="element-group"][4]//li[@id="item-3"]</openSliderPage>
+        <movingSlider>//input[@type="range"]</movingSlider>
+        <sliderValueField>//input[@id="sliderValue"]</sliderValueField>
+    </slider>
+    <toolTips>
+        <openToolTipsPage>//div[@class="element-group"][4]//li[@id="item-6"]</openToolTipsPage>
+        <reference>//a[@href="javascript:void(0)" and text()="Contrary"]</reference>
+    </toolTips>
+</locators>
