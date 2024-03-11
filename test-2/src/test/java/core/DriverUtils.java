@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 
 public class DriverUtils {
@@ -47,17 +48,12 @@ public class DriverUtils {
         driver.quit();
     }
 
-    public static void clear(String xpath) {
-        driver.findElement(By.xpath(xpath)).clear();
-    }
-
     public static void scrollToElement(String xpath) {
         WebElement element = findElementByXpath(xpath);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public static void sendFileToUpload(String xpath) {
-
         driver.findElement(By.xpath(xpath)).sendKeys(System.getProperty("user.dir") + ConfigUtils.getValue("filepath"));
     }
 
@@ -65,7 +61,42 @@ public class DriverUtils {
         return driver.findElement(By.xpath(xpath)).getCssValue("color");
     }
 
-    public static void reloadPage(){
+    public static void reloadPage() {
         driver.navigate().refresh();
+    }
+
+    public static void switchToNewTab() {
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(tabs.size() - 1));
+    }
+
+    public static void switchToNewWindow() {
+        ArrayList<String> win = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(win.get(win.size() - 1));
+    }
+
+    public static void closeCurrentTabOrWindow() {
+        driver.close();
+    }
+
+    public static void clickOkOnAlert() {
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    public static void clickCancelOnAlert() {
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
+    }
+
+    public static void enterNameToPromptAlert() {
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys(ConfigUtils.getValue("username1"));
+        alert.accept();
+    }
+
+    public static void closeNewWindow() {
+        closeCurrentTabOrWindow();
+        switchToNewWindow();
     }
 }

@@ -12,6 +12,6 @@ public class TextField extends PageElement {
     }
 
     public void clear() {
-        DriverUtils.clear(locator);
+        DriverUtils.findElementByXpath(locator).clear();
     }
 }
