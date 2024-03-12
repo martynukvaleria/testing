@@ -17,5 +17,4 @@ public class TextField extends PageElement {
     public void waitForClick(){
         DriverUtils.waitForBeClickable(locator);
     }
-
 }

@@ -17,10 +17,7 @@
     <autoComplete>
         <openWidgetsMenu>//div[@class="element-group"][4]</openWidgetsMenu>
         <openAutoCompletePage>//div[@class="element-group"][4]//li[@id="item-1"]</openAutoCompletePage>
-        <multipleColorsField>//div[@id="autoCompleteMultipleContainer"]</multipleColorsField>
-        <multipleColorsFieldAfter>//div[@class="auto-complete__control auto-complete__control--is-focused
-            auto-complete__control--menu-is-open css-1pahdxg-control"]
-        </multipleColorsFieldAfter>
+        <multipleColorsField>//div[@class="auto-complete__value-container auto-complete__value-container--is-multi css-1hwfws3"]</multipleColorsField>
         <autoCompletedMenu>//div[@class="auto-complete__menu css-2613qy-menu"]</autoCompletedMenu>
     </autoComplete>
     <datePicker>
@@ -50,6 +47,7 @@
     </slider>
     <toolTips>
         <openToolTipsPage>//div[@class="element-group"][4]//li[@id="item-6"]</openToolTipsPage>
-        <reference>//a[@href="javascript:void(0)" and text()="Contrary"]</reference>
+        <reference>//a[text()="Contrary"]</reference>
+        <referenceAfter>//a[@aria-describedby="ContraryTexToolTip"]</referenceAfter>
     </toolTips>
 </locators>

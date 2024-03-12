@@ -1,9 +1,11 @@
 package core;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.time.Duration;
 import java.util.ArrayList;
 
@@ -99,11 +101,27 @@ public class DriverUtils {
         closeCurrentTabOrWindow();
         switchToNewWindow();
     }
-    public static String getValue(String xpath){
+
+    public static String getValue(String xpath) {
         return driver.findElement(By.xpath(xpath)).getAttribute("value");
     }
 
     public static boolean isVisible(String xpath) {
         return driver.findElement(By.xpath(xpath)).isDisplayed();
+    }
+
+    public static void moveToRight(String xpath, Integer value) {
+        for (int i = 0; i < value; i++){
+            findElementByXpath(xpath).sendKeys(Keys.ARROW_RIGHT);
+        }
+    }
+    public static void moveToLeft(String xpath, Integer value) {
+        for (int i = 0; i < value; i++){
+            findElementByXpath(xpath).sendKeys(Keys.ARROW_LEFT);
+        }
+    }
+    public static void hoverToElement(String xpath){
+        Actions action = new Actions(driver);
+        action.moveToElement(findElementByXpath(xpath)).build().perform();
     }
 }

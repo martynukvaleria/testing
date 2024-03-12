@@ -41,4 +41,7 @@ public class XmlReader {
         return document.selectSingleNode("//locators/slider/" + name).getText();
     }
 
+    public static String getToolTipsLocator(String name) {
+        return document.selectSingleNode("//locators/toolTips/" + name).getText();
+    }
 }

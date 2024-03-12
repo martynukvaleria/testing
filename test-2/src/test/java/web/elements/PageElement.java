@@ -33,4 +33,7 @@ public abstract class PageElement {
     public boolean isVisible(){
         return DriverUtils.isVisible(locator);
     }
+    public void hover(){
+        DriverUtils.hoverToElement(locator);
+    }
 }
