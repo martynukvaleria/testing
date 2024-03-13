@@ -1,16 +1,19 @@
 package web;
 
+import core.DriverUtils;
 import core.XmlReader;
 import web.elements.Button;
 import web.elements.Slider;
 import web.elements.TextField;
+
+import java.util.NoSuchElementException;
 
 public class WidgetsPage {
     //colors
     private final Button openWidgetsMenu = new Button("widgets menu", XmlReader.getAutoCompleteLocator("openWidgetsMenu"));
     private final Button openAutoCompletePage = new Button("auto complete page", XmlReader.getAutoCompleteLocator("openAutoCompletePage"));
     private final TextField multipleColorsField = new TextField("multiple colors", XmlReader.getAutoCompleteLocator("multipleColorsField"));
-//    private final TextField multipleColorsFieldAfter = new TextField("then", XmlReader.getAutoCompleteLocator("multipleColorsFieldAfter"));
+    //    private final TextField multipleColorsFieldAfter = new TextField("then", XmlReader.getAutoCompleteLocator("multipleColorsFieldAfter"));
     private final TextField autoCompletedMenu = new TextField("menu", XmlReader.getAutoCompleteLocator("autoCompletedMenu"));
     //date picker
     private final Button openDatePickerPage = new Button("page", XmlReader.getDatePickerLocator("openDatePickerPage"));
@@ -48,13 +51,14 @@ public class WidgetsPage {
 
     public void typeMultipleColors(String color) {
         multipleColorsField.click();
-        //doesnt work
         multipleColorsField.sendKeys(color);
         autoCompletedMenu.waitForAppearance();
+        autoCompletedMenu.scrollToElement();
         autoCompletedMenu.click();
     }
 
     public void goToDatePickerPage() {
+        openDatePickerPage.scrollToElement();
         openDatePickerPage.click();
         inputDateField.waitForAppearance();
     }
@@ -76,6 +80,7 @@ public class WidgetsPage {
     }
 
     public void enterSecondDate() {
+        inputDateAndTimeField.scrollToElement();
         inputDateAndTimeField.click();
         nextMonthPicker.waitForClick();
         nextMonthPicker.click();
@@ -84,8 +89,8 @@ public class WidgetsPage {
 
         nextYearPicker.waitForClick();
         nextYearPicker.click();
-        for (int i = 0; i < 20; i++) {
-            //doesnt work
+
+        while (!nextDefinedYearPicker.isVisible()) {
             previousYearButton.click();
         }
         nextDefinedYearPicker.click();
@@ -98,6 +103,7 @@ public class WidgetsPage {
 
     public String getSecondDate() {
         inputDateAndTimeField.waitForAppearance();
+        inputDateAndTimeField.scrollToElement();
         return inputDateAndTimeField.getValue();
     }
 
@@ -123,6 +129,7 @@ public class WidgetsPage {
         openToolTipsPage.scrollToElement();
         openToolTipsPage.click();
         reference.waitForAppearance();
+        reference.scrollToElement();
     }
 
     public void checkHoverToText() {

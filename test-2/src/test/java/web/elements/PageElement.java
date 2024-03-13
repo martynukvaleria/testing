@@ -31,7 +31,7 @@ public abstract class PageElement {
     }
 
     public boolean isVisible(){
-        return DriverUtils.isVisible(locator);
+        return !DriverUtils.findElementsByXpath(locator).isEmpty();
     }
     public void hover(){
         DriverUtils.hoverToElement(locator);

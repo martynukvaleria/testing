@@ -17,7 +17,7 @@
     <autoComplete>
         <openWidgetsMenu>//div[@class="element-group"][4]</openWidgetsMenu>
         <openAutoCompletePage>//div[@class="element-group"][4]//li[@id="item-1"]</openAutoCompletePage>
-        <multipleColorsField>//div[@class="auto-complete__value-container auto-complete__value-container--is-multi css-1hwfws3"]</multipleColorsField>
+        <multipleColorsField>//input[@id="autoCompleteMultipleInput"]</multipleColorsField>
         <autoCompletedMenu>//div[@class="auto-complete__menu css-2613qy-menu"]</autoCompletedMenu>
     </autoComplete>
     <datePicker>
@@ -34,7 +34,7 @@
         <nextDefinedMonthPicker>//div[@class="react-datepicker__month-option" and text()="June"]
         </nextDefinedMonthPicker>
         <nextDefinedYearPicker>//div[@class="react-datepicker__year-option" and text()="2000"]</nextDefinedYearPicker>
-        <previousYearButton>//div[@class="react-datepicker__year-option"][12]
+        <previousYearButton>//div[@class="react-datepicker__year-option"]//a[contains(@class, 'previous')]
         </previousYearButton>
         <nextDefinedDayPicker>//div[@class="react-datepicker__day react-datepicker__day--015"]</nextDefinedDayPicker>
         <nextDefinedTimePicker>//li[@class="react-datepicker__time-list-item " and text()="12:00"]
@@ -48,6 +48,6 @@
     <toolTips>
         <openToolTipsPage>//div[@class="element-group"][4]//li[@id="item-6"]</openToolTipsPage>
         <reference>//a[text()="Contrary"]</reference>
-        <referenceAfter>//a[@aria-describedby="ContraryTexToolTip"]</referenceAfter>
+        <referenceAfter>//a[@aria-describedby="contraryTexToolTip"]</referenceAfter>
     </toolTips>
 </locators>
