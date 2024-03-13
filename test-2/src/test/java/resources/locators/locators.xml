@@ -18,7 +18,7 @@
         <openWidgetsMenu>//div[@class="element-group"][4]</openWidgetsMenu>
         <openAutoCompletePage>//div[@class="element-group"][4]//li[@id="item-1"]</openAutoCompletePage>
         <multipleColorsField>//input[@id="autoCompleteMultipleInput"]</multipleColorsField>
-        <autoCompletedMenu>//div[@class="auto-complete__menu css-2613qy-menu"]</autoCompletedMenu>
+        <result>//div[@class="css-12jo7m5 auto-complete__multi-value__label"]</result>
     </autoComplete>
     <datePicker>
         <openDatePickerPage>//div[@class="element-group"][4]//li[@id="item-2"]</openDatePickerPage>

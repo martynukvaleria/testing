@@ -1,20 +1,19 @@
 package web;
 
-import core.DriverUtils;
 import core.XmlReader;
 import web.elements.Button;
 import web.elements.Slider;
 import web.elements.TextField;
 
-import java.util.NoSuchElementException;
+import static org.testng.Assert.assertEquals;
 
 public class WidgetsPage {
     //colors
     private final Button openWidgetsMenu = new Button("widgets menu", XmlReader.getAutoCompleteLocator("openWidgetsMenu"));
     private final Button openAutoCompletePage = new Button("auto complete page", XmlReader.getAutoCompleteLocator("openAutoCompletePage"));
     private final TextField multipleColorsField = new TextField("multiple colors", XmlReader.getAutoCompleteLocator("multipleColorsField"));
-    //    private final TextField multipleColorsFieldAfter = new TextField("then", XmlReader.getAutoCompleteLocator("multipleColorsFieldAfter"));
-    private final TextField autoCompletedMenu = new TextField("menu", XmlReader.getAutoCompleteLocator("autoCompletedMenu"));
+    private final TextField result= new TextField("result", XmlReader.getAutoCompleteLocator("result"));
+
     //date picker
     private final Button openDatePickerPage = new Button("page", XmlReader.getDatePickerLocator("openDatePickerPage"));
     private final TextField inputDateField = new TextField("date", XmlReader.getDatePickerLocator("inputDateField"));
@@ -52,9 +51,11 @@ public class WidgetsPage {
     public void typeMultipleColors(String color) {
         multipleColorsField.click();
         multipleColorsField.sendKeys(color);
-        autoCompletedMenu.waitForAppearance();
-        autoCompletedMenu.scrollToElement();
-        autoCompletedMenu.click();
+        multipleColorsField.clickEnter();
+    }
+
+    public String result() {
+        return result.returnResultColors();
     }
 
     public void goToDatePickerPage() {

@@ -124,11 +124,9 @@ public class DriverUtils {
             findElementByXpath(xpath).sendKeys(Keys.ARROW_LEFT);
         }
     }
-
-//    public static void hoverToElement(String xpath) {
-//        Actions action = new Actions(driver);
-//        action.moveToElement(findElementByXpath(xpath)).build().perform();
-//    }
+    public static void clickEnter(String xpath){
+        findElementByXpath(xpath).sendKeys(Keys.ENTER);
+    }
 
     public static void hoverToElement(String xpath) {
         String code = "var fireOnThis = arguments[0];" + "var evObj = document.createEvent('MouseEvents');" + "evObj.initEvent( 'mouseover', true, true );" + "fireOnThis.dispatchEvent(evObj);";

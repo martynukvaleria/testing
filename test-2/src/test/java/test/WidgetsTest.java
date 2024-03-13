@@ -24,6 +24,7 @@ public class WidgetsTest {
         widgetsPage.typeMultipleColors("red");
         widgetsPage.typeMultipleColors("black");
         widgetsPage.typeMultipleColors("green");
+        assertEquals(widgetsPage.result(), "Red Black Green ");
 
         widgetsPage.goToDatePickerPage();
         widgetsPage.enterFirstDate();
