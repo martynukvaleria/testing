@@ -5,8 +5,6 @@ import core.XmlReader;
 import web.elements.Button;
 import web.elements.TextField;
 
-import java.util.Collection;
-
 public class AlertsPage {
     private final Button openAlertsMenu = new Button("open alerts menu", XmlReader.getAlertLocator("openAlertsMenuLocator"));
     private final Button openAlertsPage = new Button("open alerts page", XmlReader.getAlertLocator("openAlertsPageLocator"));

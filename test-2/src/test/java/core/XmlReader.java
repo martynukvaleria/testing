@@ -20,10 +20,28 @@ public class XmlReader {
             throw new RuntimeException(e);
         }
     }
+
     public static String getBrowserLocator(String name) {
         return document.selectSingleNode("//locators/browser/" + name).getText();
     }
+
     public static String getAlertLocator(String name) {
         return document.selectSingleNode("//locators/alert/" + name).getText();
+    }
+
+    public static String getAutoCompleteLocator(String name) {
+        return document.selectSingleNode("//locators/autoComplete/" + name).getText();
+    }
+
+    public static String getDatePickerLocator(String name) {
+        return document.selectSingleNode("//locators/datePicker/" + name).getText();
+    }
+
+    public static String getSliderLocator(String name) {
+        return document.selectSingleNode("//locators/slider/" + name).getText();
+    }
+
+    public static String getToolTipsLocator(String name) {
+        return document.selectSingleNode("//locators/toolTips/" + name).getText();
     }
 }

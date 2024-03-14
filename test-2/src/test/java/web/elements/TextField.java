@@ -14,4 +14,7 @@ public class TextField extends PageElement {
     public void clear() {
         DriverUtils.findElementByXpath(locator).clear();
     }
+    public void waitForClick(){
+        DriverUtils.waitForBeClickable(locator);
+    }
 }

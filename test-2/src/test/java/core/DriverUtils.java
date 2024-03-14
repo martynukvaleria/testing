@@ -1,11 +1,13 @@
 package core;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DriverUtils {
@@ -31,9 +33,12 @@ public class DriverUtils {
     public static WebElement findElementByXpath(String xpath) {
         return driver.findElement(By.xpath(xpath));
     }
-
+    public static List<WebElement> findElementsByXpath(String xpath){
+        return driver.findElements(By.xpath(xpath));
+    }
     public static void click(String locatorOfButton) {
-        driver.findElement(By.xpath(locatorOfButton)).click();
+        waitForBeClickable(locatorOfButton);
+        findElementByXpath(locatorOfButton).click();
     }
 
     public static void sendKeys(String text, String locator) {
@@ -54,11 +59,11 @@ public class DriverUtils {
     }
 
     public static void sendFileToUpload(String xpath) {
-        driver.findElement(By.xpath(xpath)).sendKeys(System.getProperty("user.dir") + ConfigUtils.getValue("filepath"));
+        findElementByXpath(xpath).sendKeys(System.getProperty("user.dir") + ConfigUtils.getValue("filepath"));
     }
 
     public static String getColor(String xpath) {
-        return driver.findElement(By.xpath(xpath)).getCssValue("color");
+        return findElementByXpath(xpath).getCssValue("color");
     }
 
     public static void reloadPage() {
@@ -98,5 +103,33 @@ public class DriverUtils {
     public static void closeNewWindow() {
         closeCurrentTabOrWindow();
         switchToNewWindow();
+    }
+
+    public static String getValue(String xpath) {
+        return findElementByXpath(xpath).getAttribute("value");
+    }
+
+    public static boolean isVisible(String xpath) {
+        return findElementByXpath(xpath).isDisplayed();
+    }
+
+    public static void moveToRight(String xpath, Integer value) {
+        for (int i = 0; i < value; i++) {
+            findElementByXpath(xpath).sendKeys(Keys.ARROW_RIGHT);
+        }
+    }
+
+    public static void moveToLeft(String xpath, Integer value) {
+        for (int i = 0; i < value; i++) {
+            findElementByXpath(xpath).sendKeys(Keys.ARROW_LEFT);
+        }
+    }
+    public static void clickEnter(String xpath){
+        findElementByXpath(xpath).sendKeys(Keys.ENTER);
+    }
+
+    public static void hoverToElement(String xpath) {
+        String code = "var fireOnThis = arguments[0];" + "var evObj = document.createEvent('MouseEvents');" + "evObj.initEvent( 'mouseover', true, true );" + "fireOnThis.dispatchEvent(evObj);";
+        ((JavascriptExecutor) driver).executeScript(code, findElementByXpath(xpath));
     }
 }
